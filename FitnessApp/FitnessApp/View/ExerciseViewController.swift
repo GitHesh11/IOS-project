@@ -31,48 +31,38 @@ class ExerciseViewController: UIViewController {
         textFieldHolder.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
         
-        greetingHolder.addArrangedSubview(foodImage);
-        foodImage.contentMode = .scaleAspectFit
-        foodImage.clipsToBounds=true
+        greetingHolder.addArrangedSubview(exeImage);
+        exeImage.contentMode = .scaleAspectFit
+        exeImage.clipsToBounds=true
         
 
         
-        textFieldHolder.insertArrangedSubview(foodName, at: 0)
-        textFieldHolder.insertArrangedSubview(foodCal, at: 1)
-        textFieldHolder.insertArrangedSubview(foodDesc, at: 2)
+        textFieldHolder.insertArrangedSubview(exeName, at: 0)
+        textFieldHolder.insertArrangedSubview(exeDesc, at: 1)
         
         navigationController?.navigationBar.isHidden = false
         
-        
-        
-        foodName.text = exe?.name;
-        
-        foodDesc.text = exe?.description;
-        
-        
-        foodImage.kf.setImage(with: URL(string: exe?.img ?? ""))
+        exeName.text = exe?.name;
+        exeDesc.text = exe?.description;
+        exeImage.kf.setImage(with: URL(string: exe?.img ?? ""))
         
     }
-    let foodName : UILabel = {
+    let exeName : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
         return label
     }()
     
-    let foodDesc : UILabel = {
+    let exeDesc : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         return label
     }()
     
-    let foodCal : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = ""
-        return label
-    }()
     
     let textFieldHolder : UIStackView = {
         let holder = UIStackView()
@@ -116,7 +106,7 @@ class ExerciseViewController: UIViewController {
     }
     // MARK: Properties -
     
-    let foodImage : UIImageView = {
+    let exeImage : UIImageView = {
         var iv = UIImageView()
         iv.backgroundColor = .black
         iv.contentMode = .scaleAspectFill
@@ -150,14 +140,6 @@ class ExerciseViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    
-    let controller = Controller();
-    
-    func showAlert(title:String){
-        let alertView = UIAlertController(title: title, message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        alertView.addAction(action)
-        self.present(alertView, animated: true, completion: nil)
-    }
+
 
 }

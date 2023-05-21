@@ -61,7 +61,7 @@ struct Controller {
     
     func getExercises(completionBlock: @escaping (_ success: [ExerciseModel]) -> Void) {
         
-        var foodList:[ExerciseModel] = []
+        var exeList:[ExerciseModel] = []
         var db: DatabaseReference!
         db = Database.database().reference()
         
@@ -74,9 +74,9 @@ struct Controller {
                 let name = placeDict["name"] as! String
                 let description = placeDict["description"] as! String
                 
-                foodList.append(ExerciseModel(img: img, name: name,description:description))
+                exeList.append(ExerciseModel(img: img, name: name,description:description))
             }
-            completionBlock(foodList)
+            completionBlock(exeList)
         }
         
     }

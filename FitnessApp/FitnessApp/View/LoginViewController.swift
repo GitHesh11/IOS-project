@@ -189,7 +189,6 @@ class LoginViewController: UIViewController {
                 self.controller.getCurLoginUser{(user,i) -> Void in
                    
                     let main = HomeViewController();
-//                    main.user = user;
                     let homeview = UINavigationController(rootViewController: main)
                     homeview.tabBarItem.image = UIImage(systemName: "house")
                     homeview.title = "Home"

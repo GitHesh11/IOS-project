@@ -11,7 +11,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var foodList : [ExerciseModel] = []
+    var list : [ExerciseModel] = []
     let controller  = Controller();
     
     override func viewDidLoad() {
@@ -30,11 +30,11 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         
-        self.foodList = [];
+        self.list = [];
 
-        controller.getExercises() { (foodListGet) in
+        controller.getExercises() { (listGet) in
             DispatchQueue.main.async {
-                self.foodList.append(contentsOf: foodListGet);
+                self.list.append(contentsOf: listGet);
                 self.FavouriteTableView.reloadData();
             }
         }
@@ -54,22 +54,25 @@ class HomeViewController: UIViewController {
         let list = UITableView(frame: .zero)
         list.translatesAutoresizingMaskIntoConstraints = false
         list.showsVerticalScrollIndicator = false
+        list.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
+        list.layer.cornerRadius = 10
         return list
     }()
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodList.count
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableCell.reuseableId, for: indexPath) as! ExerciseTableCell
-        let item = foodList[indexPath.row]
+        let item = list[indexPath.row]
         cell.setupOrder(for: item)
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets.zero
         cell.selectionStyle = .none
+        cell.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -79,8 +82,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ExerciseViewController()
         
-        let food = foodList[indexPath.row]
-        vc.exe = food;
+        let exe = list[indexPath.row]
+        vc.exe = exe;
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -97,8 +100,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             heading.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             
             FavouriteTableView.topAnchor.constraint(equalTo: heading.bottomAnchor, constant: 10),
-            FavouriteTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            FavouriteTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            FavouriteTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            FavouriteTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             FavouriteTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
