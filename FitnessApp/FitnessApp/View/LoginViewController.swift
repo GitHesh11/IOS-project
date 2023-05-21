@@ -123,7 +123,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = color.light_green
         
         greetingHolder.insertArrangedSubview(firstLabel, at: 0)
         greetingHolder.insertArrangedSubview(greetingLabel, at: 1)

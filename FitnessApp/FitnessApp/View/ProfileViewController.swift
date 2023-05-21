@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = color.light_green
         setupViews()
         setupConstraints()
         
@@ -113,9 +113,9 @@ class ProfileViewController: UIViewController {
         homeview.tabBarItem.image = UIImage(systemName: "house")
         homeview.title = "Home"
         
-        let loginview = UINavigationController(rootViewController: LoginViewController())
+        let loginview = UINavigationController(rootViewController: BMIViewController())
         loginview.tabBarItem.image = UIImage(systemName: "person")
-        loginview.title = "Profile"
+        loginview.title = "BMI"
         
         self.tabBarController?.selectedIndex = 0;
         self.tabBarController?.tabBar.tintColor = .label

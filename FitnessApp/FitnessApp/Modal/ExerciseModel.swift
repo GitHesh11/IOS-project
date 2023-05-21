@@ -11,4 +11,5 @@ struct ExerciseModel: Identifiable {
     var img: String
     var name: String
     var description:String
+    var video :String
 }

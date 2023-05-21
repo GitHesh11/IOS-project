@@ -7,6 +7,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import SafariServices
 
 class ExerciseViewController: UIViewController {
     
@@ -15,7 +16,7 @@ class ExerciseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = color.light_green
         
         setupNavigationBar()
         view.addSubview(textFieldHolder)
@@ -38,7 +39,8 @@ class ExerciseViewController: UIViewController {
 
         
         textFieldHolder.insertArrangedSubview(exeName, at: 0)
-        textFieldHolder.insertArrangedSubview(exeDesc, at: 1)
+        textFieldHolder.insertArrangedSubview(videoBtn, at: 1)
+        textFieldHolder.insertArrangedSubview(exeDesc, at: 2)
         
         navigationController?.navigationBar.isHidden = false
         
@@ -92,6 +94,17 @@ class ExerciseViewController: UIViewController {
         
     }()
     
+    let videoBtn: UIButton = {
+        var btn = UIButton()
+        btn.setTitle("Video", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.titleLabel?.font = UIFont(name: font.semi_bold.rawValue, size: 16)
+        btn.backgroundColor = .black
+        btn.layer.cornerRadius = 5
+        btn.addTarget(self, action: #selector(videoView), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -141,5 +154,11 @@ class ExerciseViewController: UIViewController {
     }
     
 
+    @objc func videoView(){
+        let vc = VideoViewController()
+        
+        vc.safariVC = SFSafariViewController(url: URL(string: exe?.video ?? "")!)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 }

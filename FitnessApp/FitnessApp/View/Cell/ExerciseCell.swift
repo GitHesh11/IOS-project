@@ -23,7 +23,7 @@ class ExerciseTableCell: UITableViewCell {
     }
   
     
-    let orderImage : UIImageView = {
+    let imageExe : UIImageView = {
         var iv = UIImageView()
         iv.backgroundColor = color.grey
         iv.contentMode = .scaleAspectFill
@@ -55,7 +55,7 @@ class ExerciseTableCell: UITableViewCell {
 
     
     func setupViews() {
-        [orderImage,detailContainer].forEach {
+        [imageExe,detailContainer].forEach {
             contentView.addSubview($0)
         }
         [titleLabel].forEach { item in
@@ -67,19 +67,19 @@ class ExerciseTableCell: UITableViewCell {
        
         NSLayoutConstraint.activate([
             
-            orderImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18),
-            orderImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            orderImage.widthAnchor.constraint(equalToConstant: 68),
-            orderImage.heightAnchor.constraint(equalTo: orderImage.widthAnchor),
+            imageExe.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18),
+            imageExe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5),
+            imageExe.widthAnchor.constraint(equalToConstant: 68),
+            imageExe.heightAnchor.constraint(equalTo: imageExe.widthAnchor),
             
-            detailContainer.centerYAnchor.constraint(equalTo: orderImage.centerYAnchor),
-            detailContainer.leadingAnchor.constraint(equalTo: orderImage.trailingAnchor, constant: 10),
+            detailContainer.centerYAnchor.constraint(equalTo: imageExe.centerYAnchor),
+            detailContainer.leadingAnchor.constraint(equalTo: imageExe.trailingAnchor, constant: 10),
    
         ])
     }
     
     func setupOrder(for item: ExerciseModel){
-        orderImage.kf.setImage(with: URL(string: item.img))
+        imageExe.kf.setImage(with: URL(string: item.img))
         titleLabel.text = item.name
     }
     

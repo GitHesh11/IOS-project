@@ -16,7 +16,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign Up"
-        view.backgroundColor = .white
+        view.backgroundColor = color.light_green
         setupNavigationBar()
         setupViews()
         setupConstraints()
@@ -75,7 +75,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let input =  BFTextField(frame: .zero)
         input.placeholder = "Password"
         input.title = "Password"
-        input.text = "Boateng"
+        input.text = ""
         input.isSecureTextEntry.toggle()
         input.translatesAutoresizingMaskIntoConstraints = false
         return input
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let input =  BFTextField(frame: .zero)
         input.placeholder = "E-mail"
         input.title = "E-mail"
-        input.text = "kwameagyenimboateng64@gmail.com"
+        input.text = ""
         input.translatesAutoresizingMaskIntoConstraints = false
         return input
     }()
@@ -92,7 +92,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let input =  BFTextField(frame: .zero)
         input.placeholder = "Phone number"
         input.title = "Phone number"
-        input.text = "+233208956935"
+        input.text = ""
         input.translatesAutoresizingMaskIntoConstraints = false
         return input
     }()

@@ -13,7 +13,7 @@ struct color {
     static let bg_grey = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
     static let background = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
     static let red = UIColor(red: 0.93, green: 0.24, blue: 0.36, alpha: 1.00)
-    static let light_green = UIColor(red: 0.78, green: 0.99, blue: 0.89, alpha: 1.00)
+    static let light_green = UIColor(red: 0.78, green: 0.99, blue: 0.89, alpha: 0.3)
     static let dark_green = UIColor(red: 0.18, green: 0.60, blue: 0.35, alpha: 1.00)
 }
 enum font:String {

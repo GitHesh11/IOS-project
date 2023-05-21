@@ -128,7 +128,7 @@ class BMIViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = color.light_green
         
         holder.insertArrangedSubview(firstLabel, at: 0)
         holder.insertArrangedSubview(greetingLabel, at: 1)
@@ -199,7 +199,7 @@ class BMIViewController: UIViewController {
                     case 25...:
                         registerLabel.text = "Your bmi is \(bmi) therefore you are overweight"
                     default:
-                        registerLabel.text = "" // this is to shut up the compiler
+                        registerLabel.text = ""
                     }
     }
     
@@ -207,41 +207,6 @@ class BMIViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    
-    func calcBMI (mass : Double, height : Double) -> String{
-        
-        //let myBmi = mass / (height * height)
-        
-        let bmi = mass / pow(height, 2)
-        
-        //let shortenedBmi = round(bmi) // Not good. It is celing function & makes 29.7299 to 30.0
-        
-        let shortenedBmi = String(format: "%.2f", bmi) // It rounds to 2
-        //let shortenedBmi = String(format: "%1.0f", bmi) // It rounds to 0
-        //let shortenedBmi = String(format: "%1.1f", bmi) // It rounds to 1
-        
-        var interpretation = ""
-        
-        if bmi > 25{
-            
-            interpretation = "You are overweight mate."
-        }
-        //else if myBmi >= 18.5 && myBmi <= 25{
-          else if bmi >= 18.5{
-            interpretation = "You are healthy mate."
-        }
-        else
-        {
-            interpretation = "You are underweight mate."
-        }
-        
-        //return "Your BMI is \(bmi). " + interpretation + " & BMI of a healthy guy is between 18.5 & 25"
-        //return "Your BMI is " + String(bmi) + "." + interpretation + " & BMI of a healthy guy is between 18.5 & 25" // String(bmi) converts bmi data Type to String (Type Casting)
-        return "Your BMI is \(shortenedBmi). \(interpretation) & BMI of a healthy guy is between 18.5 & 25"
-
-    }
-    
     
     func showAlert(title:String){
         let alertView = UIAlertController(title: title, message: "", preferredStyle: .alert)

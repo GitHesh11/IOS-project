@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = color.light_green
         setupViews()
         setupConstraints()
         FavouriteTableView.delegate = self
